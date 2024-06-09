@@ -1,7 +1,6 @@
-'use client'
-
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
+import { useEffect } from 'react'
 import ToolMenu from './ToolMenu'
 
 type Props = {
@@ -22,11 +21,14 @@ const Tiptap = ({ sentence, setSentence }: Props) => {
     },
   })
 
-  if (editor) {
-    editor.on('update', () => {
-      setSentence(editor.getText())
-    })
-  }
+  useEffect(() => {
+    if (editor) {
+      editor.commands.setContent(sentence)
+      editor.on('update', () => {
+        setSentence(editor.getText())
+      })
+    }
+  }, [editor, sentence, setSentence])
 
   if (!editor) {
     return null
