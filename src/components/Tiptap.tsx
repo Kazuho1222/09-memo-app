@@ -35,9 +35,9 @@ const Tiptap = ({ sentence, setSentence }: Props) => {
   }
 
   return (
-    <div className='w-2/3 mt-10 mx-auto border-gray-500 border-2'>
+    <div className='border-gray-500 border-2 h-full'>
       <ToolMenu editor={editor} />
-      <div className='p-3 overflow-y-scroll h-[70vh] overflow-hidden mt-3'>
+      <div className='overflow-y-scroll overflow-hidden mt-3 h-3/4'>
         <EditorContent editor={editor} />
       </div>
     </div>
