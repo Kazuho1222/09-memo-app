@@ -9,7 +9,7 @@ type Memo = {
 
 
 export default function Home() {
-  const [memos, setMemos] = useState<Memo[]>([{ id: 1, content: 'new note' }])
+  const [memos, setMemos] = useState<Memo[]>([{ id: 0, content: 'new note' }])
   const [currentMemoId, setCurrentMemoId] = useState<number>(memos[0].id)
 
   const currentMemo = memos.find(memo => memo.id === currentMemoId)
@@ -38,7 +38,7 @@ export default function Home() {
       } else if (updatedMemos.length > 0) {
         setCurrentMemoId(updatedMemos[0].id);
       } else {
-        const newMemo = { id: 1, content: 'new note' };
+        const newMemo = { id: 0, content: 'new note' };
         setMemos([newMemo]);
         setCurrentMemoId(newMemo.id);
         return;

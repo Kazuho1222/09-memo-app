@@ -23,12 +23,17 @@ const Tiptap = ({ sentence, setSentence }: Props) => {
 
   useEffect(() => {
     if (editor) {
-      editor.commands.setContent(sentence)
-      editor.on('update', () => {
-        setSentence(editor.getText())
-      })
+      editor.commands.setContent(sentence);
+      const updateHandler = () => {
+        setSentence(editor.getText());
+      }
+      editor.on('update', updateHandler);
+
+      return () => {
+        editor.off('update', updateHandler);
+      }
     }
-  }, [editor, sentence, setSentence])
+  }, [editor, sentence, setSentence]);
 
   if (!editor) {
     return null

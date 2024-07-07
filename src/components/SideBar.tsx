@@ -25,7 +25,11 @@ function SideBar({ memos, setCurrentMemoId, addNewMemo, deleteMemo }: SideBarPro
               <li className="" key={memo.id} onClick={() => setCurrentMemoId(memo.id)}>
                 <div className="flex justify-between rounded-md text-center bg-slate-600 hover:bg-slate-800 text-white items-center mx-auto m-4 p-2 cursor-pointer">
                   <span>{memo.content}</span>
-                  <button onClick={() => deleteMemo(memo.id)}><MdDelete /></button>
+                  <button onClick={(e) => {
+                    e.stopPropagation();
+                    deleteMemo(memo.id);
+                  }}
+                  ><MdDelete /></button>
                 </div>
               </li>
             ))}

@@ -1,5 +1,5 @@
 import { Editor } from "@tiptap/react"
-import { MdCode, MdFormatBold, MdFormatItalic, MdFormatStrikethrough, MdHorizontalRule, MdOutlineBrightness1, MdRedo, MdUndo } from "react-icons/md"
+import { MdCode, MdFormatBold, MdFormatItalic, MdFormatStrikethrough, MdHorizontalRule, MdRedo, MdUndo } from "react-icons/md"
 
 
 const ToolMenu = ({ editor }: { editor: Editor }) => {
@@ -84,12 +84,6 @@ const ToolMenu = ({ editor }: { editor: Editor }) => {
         type="button"
       >
         <MdRedo />
-      </button>
-      <button
-        onClick={() => editor.chain().focus().setColor('#958DF1').run()}
-        className={editor.isActive('textStyle', { color: '#958DF1' }) ? 'is-active' : ''}
-      >
-        purple
       </button>
     </div >
   )
