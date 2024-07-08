@@ -22,10 +22,15 @@ const Tiptap = ({ sentence, setSentence }: Props) => {
   })
 
   useEffect(() => {
-    if (editor) {
+    if (editor && sentence !== editor.getHTML()) {
       editor.commands.setContent(sentence);
+    }
+  }, [editor, sentence]);
+
+  useEffect(() => {
+    if (editor) {
       const updateHandler = () => {
-        setSentence(editor.getText());
+        setSentence(editor.getHTML());
       }
       editor.on('update', updateHandler);
 
@@ -33,7 +38,7 @@ const Tiptap = ({ sentence, setSentence }: Props) => {
         editor.off('update', updateHandler);
       }
     }
-  }, [editor, sentence, setSentence]);
+  }, [editor, setSentence]);
 
   if (!editor) {
     return null
@@ -49,4 +54,4 @@ const Tiptap = ({ sentence, setSentence }: Props) => {
   )
 }
 
-export default Tiptap
+export default Tiptap;

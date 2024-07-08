@@ -8,6 +8,10 @@ type SideBarProps = {
 }
 
 function SideBar({ memos, setCurrentMemoId, addNewMemo, deleteMemo }: SideBarProps) {
+  const stripHtml = (html: string) => {
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    return doc.body.textContent || "";
+  }
   return (
     <>
       <div className="bg-slate-200 p-6 h-full">
@@ -24,7 +28,7 @@ function SideBar({ memos, setCurrentMemoId, addNewMemo, deleteMemo }: SideBarPro
             {memos.map(memo => (
               <li className="" key={memo.id} onClick={() => setCurrentMemoId(memo.id)}>
                 <div className="flex justify-between rounded-md text-center bg-slate-600 hover:bg-slate-800 text-white items-center mx-auto m-4 p-2 cursor-pointer">
-                  <span>{memo.content}</span>
+                  <span>{stripHtml(memo.content)}</span>
                   <button onClick={(e) => {
                     e.stopPropagation();
                     deleteMemo(memo.id);

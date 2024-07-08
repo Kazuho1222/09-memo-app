@@ -3,9 +3,6 @@ import { MdCode, MdFormatBold, MdFormatItalic, MdFormatStrikethrough, MdHorizont
 
 
 const ToolMenu = ({ editor }: { editor: Editor }) => {
-  // if (!editor) {
-  //   return null
-  // }
 
   return (
     <div className="flex flex-wrap gap-2 border-b border-gray-600 p-4 text-2xl">

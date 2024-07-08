@@ -7,25 +7,24 @@ type Memo = {
   content: string;
 }
 
-
 export default function Home() {
-  const [memos, setMemos] = useState<Memo[]>([{ id: 0, content: 'new note' }])
-  const [currentMemoId, setCurrentMemoId] = useState<number>(memos[0].id)
+  const [memos, setMemos] = useState<Memo[]>([{ id: 0, content: 'new note' }]);
+  const [currentMemoId, setCurrentMemoId] = useState<number>(memos[0].id);
 
-  const currentMemo = memos.find(memo => memo.id === currentMemoId)
+  const currentMemo = memos.find(memo => memo.id === currentMemoId);
 
   const updateMemoContent = (content: string) => {
     const updatedMemos = memos.map(memo =>
       memo.id === currentMemoId ? { ...memo, content } : memo
-    )
-    setMemos(updatedMemos)
+    );
+    setMemos(updatedMemos);
   }
 
   const addNewMemo = () => {
-    const newMemo = { id: memos.length + 1, content: 'new note' }
-    const updatedMemos = [...memos, newMemo]
-    setMemos(updatedMemos)
-    setCurrentMemoId(newMemo.id)
+    const newMemo = { id: memos.length + 1, content: 'new note' };
+    const updatedMemos = [...memos, newMemo];
+    setMemos(updatedMemos);
+    setCurrentMemoId(newMemo.id);
   }
 
   const deleteMemo = (id: number) => {
@@ -48,10 +47,9 @@ export default function Home() {
   }
 
   return (
-    <div className='flex items-center justify-center container mx-auto  h-[100vh]'>
+    <div className='flex items-center justify-center container mx-auto h-[100vh]'>
       <div className='w-1/4 h-3/4'>
         <SideBar memos={memos} setCurrentMemoId={setCurrentMemoId} addNewMemo={addNewMemo} deleteMemo={deleteMemo} />
-
       </div>
       <div className='w-3/4 h-3/4'>
         {currentMemo && (
@@ -62,5 +60,5 @@ export default function Home() {
         )}
       </div>
     </div>
-  )
+  );
 }
